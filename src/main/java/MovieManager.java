@@ -6,7 +6,7 @@ public class MovieManager {
 
     // Конструктор по умолчанию
     public MovieManager() {
-        this.limit = 5;
+        this.limit = 5; // Устанавливаем лимит по умолчанию
         this.movies = new ArrayList<>();
     }
 
@@ -29,14 +29,13 @@ public class MovieManager {
 
     // Метод для получения последних добавленных фильмов
     public Movie[] findLast() {
-        int resultLength = Math.min(movies.size(), limit);
+        int resultLength = Math.min(movies.size(), limit); // Вычисляем размер результирующего массива
         Movie[] result = new Movie[resultLength];
 
         for (int i = 0; i < resultLength; i++) {
-            result[i] = movies.get(movies.size() - 1 - i);
+            result[i] = movies.get(movies.size() - 1 - i); // Заполняем массив в обратном порядке
         }
 
         return result;
     }
 }
-
