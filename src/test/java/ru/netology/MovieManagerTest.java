@@ -28,9 +28,7 @@ public class MovieManagerTest {
         manager.addMovie(movie1);
         manager.addMovie(movie2);
         Movie[] movies = manager.findAll();
-        assertEquals(2, movies.length);
-        assertEquals(movie1, movies[0]);
-        assertEquals(movie2, movies[1]);
+        assertArrayEquals(new Movie[]{movie1, movie2}, movies);
     }
 
     @Test
@@ -45,12 +43,13 @@ public class MovieManagerTest {
         });
 
         Movie[] lastMovies = manager.findLast();
-        assertEquals(5, lastMovies.length);
-        assertEquals("Movie 4", lastMovies[0].getTitle());
-        assertEquals("Movie 3", lastMovies[1].getTitle());
-        assertEquals("Movie 2", lastMovies[2].getTitle());
-        assertEquals("Movie 1", lastMovies[3].getTitle());
-        assertEquals("Movie 0", lastMovies[4].getTitle());
+        assertArrayEquals(new Movie[]{
+                new Movie("Movie 4"),
+                new Movie("Movie 3"),
+                new Movie("Movie 2"),
+                new Movie("Movie 1"),
+                new Movie("Movie 0")
+        }, lastMovies);
     }
 
     @Test
@@ -58,9 +57,10 @@ public class MovieManagerTest {
         manager.addMovie(new Movie("Inception"));
         manager.addMovie(new Movie("The Matrix"));
         Movie[] lastMovies = manager.findLast();
-        assertEquals(2, lastMovies.length);
-        assertEquals("The Matrix", lastMovies[0].getTitle());
-        assertEquals("Inception", lastMovies[1].getTitle());
+        assertArrayEquals(new Movie[]{
+                new Movie("The Matrix"),
+                new Movie("Inception")
+        }, lastMovies);
     }
 
     @Test
@@ -88,9 +88,10 @@ public class MovieManagerTest {
         manager.addMovie(new Movie("Movie 1"));
         manager.addMovie(new Movie("Movie 2"));
         Movie[] lastMovies = manager.findLast();
-        assertEquals(2, lastMovies.length);
-        assertEquals("Movie 2", lastMovies[0].getTitle());
-        assertEquals("Movie 1", lastMovies[1].getTitle());
+        assertArrayEquals(new Movie[]{
+                new Movie("Movie 2"),
+                new Movie("Movie 1")
+        }, lastMovies);
     }
 
     @Test
@@ -101,4 +102,3 @@ public class MovieManagerTest {
         });
     }
 }
-

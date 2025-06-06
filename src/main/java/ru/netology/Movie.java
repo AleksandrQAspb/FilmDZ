@@ -36,4 +36,3 @@ public class Movie {
         return Objects.hash(title);
     }
 }
-
